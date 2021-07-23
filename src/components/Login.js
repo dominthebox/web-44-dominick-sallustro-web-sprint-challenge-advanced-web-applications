@@ -1,6 +1,6 @@
-import axios from "axios";
 import React, { useState } from "react";
 import { useHistory } from 'react-router-dom';
+import axiosWithAuth from "../helpers/axiosWithAuth";
 
 
 const Login = () => {
@@ -15,8 +15,9 @@ const Login = () => {
   // const error = "Username or Password not valid.";
   //replace with error state
 
-  const loginSubmit = () => {
-    axios.post(`http://localhost:5000/api/login`, formValues)
+  const loginSubmit = (formValues) => {
+    axiosWithAuth()
+      .post(`/login`, formValues)
       .then(res => {
         // console.log(res);
         localStorage.setItem('token', res.data.payload)
