@@ -12,7 +12,9 @@ const BubblePage = (props) => {
 
   const { id } = useParams();
 
-  fetchColorService();
+  useEffect(() => {
+    fetchColorService();
+  }, []);
 
   const toggleEdit = (value) => {
     setEditing(value);
